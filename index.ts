@@ -1,8 +1,15 @@
-import Logger from "./logger";
+import http from 'http';
+import path from 'path';
+import fs from 'fs';
 
-// Logger is a class so we need to instantiate it.
-const logger = new Logger;
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end("<h1>Home</h1>");
+    }
+});
 
-logger.on('message', (data) => console.log('Called Listiner:', data));
+// Environment variable
+const PORT = process.env.PORT || 5000;
 
-logger.log('Hello World');
+server.listen(PORT, () => console.log(`Server running on ${PORT}`));
