@@ -1,5 +1,8 @@
-import Person from './person';
+import Logger from "./logger";
 
-const person = new Person("Amir", 20);
+// Logger is a class so we need to instantiate it.
+const logger = new Logger;
 
-console.log(person.greet());
+logger.on('message', (data) => console.log('Called Listiner:', data));
+
+logger.log('Hello World');
