@@ -18,6 +18,13 @@ const server = http.createServer((req, res) => {
             res.end(content);
         });
     }
+    if (req.url === '/api/users') {
+        const users = [
+            { name: "Bob Smith", age: 40 }, { name: "John Doe", age: 30 }
+        ];
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(users));
+    }
 });
 
 // Environment variable
